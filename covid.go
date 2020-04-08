@@ -6,6 +6,11 @@ import (
 	"time"
 )
 
+type Full struct {
+	Code int
+	Data []Data
+}
+
 type Data struct {
 	Location    string
 	CountryCode string
@@ -17,11 +22,11 @@ type Data struct {
 	Updated     time.Time
 }
 
-func Info(data *[]Data) error {
+func Info(info *Full) error {
 	resp, err := http.Get("https://www.trackcorona.live/api/countries")
 	if err != nil {
 		return err
 	}
 	defer resp.Body.Close()
-	return json.NewDecoder(resp.Body).Decode(data)
+	return json.NewDecoder(resp.Body).Decode(info)
 }
