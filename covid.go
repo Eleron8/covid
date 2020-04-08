@@ -29,4 +29,5 @@ func Info(info *Full) error {
 	}
 	defer resp.Body.Close()
 	return json.NewDecoder(resp.Body).Decode(info)
+
 }
