@@ -6,6 +6,7 @@ import (
 	"net/http"
 )
 
+//Full is JSON file
 type Full struct {
 	Code int    `json:"code"`
 	Data []Data `json:"data"`
